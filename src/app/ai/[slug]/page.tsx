@@ -5,6 +5,9 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { getSectionName, getTool, tools } from "../data";
 import ToolCard, { ToolIcon } from "../ToolCard";
 
+// 静态导出只能生成已知的页面，列表之外的 slug 直接 404
+export const dynamicParams = false;
+
 // 打包时为每个工具提前生成详情页
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));

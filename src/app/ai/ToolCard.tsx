@@ -8,7 +8,7 @@ export function ToolIcon({ tool, size = 48 }: { tool: Tool; size?: number }) {
   if (tool.icon) {
     return (
       <Image
-        src={tool.icon}
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH}${tool.icon}`}
         alt={tool.name}
         width={size}
         height={size}
