@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 拾光 · 个人网站
 
-## Getting Started
+用 Next.js 搭建的个人网站，包含个人主页和一个 AI 工具导航。
 
-First, run the development server:
+- **首页**：个人介绍、项目展示、学习笔记
+- **关于我**：简介、技能栈、近期经历
+- **AI 工具导航**：收录常用 AI 工具，按对话、搜索、写作、编程、绘画、视频分类浏览，每个工具有独立详情页
+
+## 技术栈
+
+Next.js 16（App Router）· React 19 · TypeScript · Tailwind CSS 4 · lucide-react
+
+## 本地运行
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 http://localhost:3000 查看。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 目录结构
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/app/
+├── layout.tsx              # 根布局：<html>、字体
+├── (site)/                 # 路由分组：首页和关于我共用左侧边栏，分组名不进网址
+│   ├── layout.tsx
+│   ├── SiteSidebar.tsx
+│   ├── profile.ts          # 个人信息都在这里改
+│   ├── page.tsx            # → /
+│   └── about/page.tsx      # → /about
+└── ai/                     # AI 工具导航，使用自己的布局，全屏展示
+    ├── layout.tsx
+    ├── data.ts             # 工具数据：增删工具改这里
+    ├── page.tsx            # → /ai
+    └── [slug]/page.tsx     # → /ai/doubao 等，打包时静态生成
+```
 
-## Learn More
+## 常见修改
 
-To learn more about Next.js, take a look at the following resources:
+- **改个人信息**：编辑 `src/app/(site)/profile.ts`，包括网名、简介、技能、笔记、时间线
+- **增删 AI 工具**：编辑 `src/app/ai/data.ts`，图标放在 `public/ai-icons/`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 部署
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+推送到 GitHub 后在 [Vercel](https://vercel.com) 导入仓库即可，无需额外配置。
