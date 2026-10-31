@@ -221,6 +221,15 @@ export const tools: Tool[] = [
     overseas: true,
   },
 
+  {
+    slug: "agent-qa",
+    name: "agent-qa",
+    company: "vostride",
+    description: "网页、Android 与 iOS 的 AI 测试工具，结合 memidex 持久记忆、经验证的自我改进、MCP 和可回看的运行证据；模型费用另计。",
+    url: "https://vostride.com",
+    category: "code",
+  },
+
   // AI绘画
   {
     slug: "jimeng",
